@@ -1,0 +1,376 @@
+
+/* Define color variables */
+:root {
+    --text-1: #333;
+    --text-2: #666;
+    --text-3: #999;
+    --white: #fff;
+    --line: #CCC;
+    --time-bg: #EEE;
+    --background-display-messages:#fffefe;
+    --sender-message:#301c1c;
+    --sender-box: #bda3a3cc;
+    --receiver-box: #cccc;
+    --receiver-message:#222020;
+    --scrollbar-track:#ffff;
+    --scrollbar-thumb:#cccc;
+   
+}
+
+.dark-mode{
+    --text-1: #fff;
+    --text-2: #cfc9c9;
+    --text-3: #d8dada;
+    --line: #e0d1d1;
+    --white: #454745;
+    --time-bg: #492e2e;
+    --background-display-messages:#666;
+    --receiver-box: rgba(255, 255, 255, 0.333);
+    --sender-box: #cccc;
+    --scrollbar-track:#666;
+    --scrollbar-thumb:#492e2e;
+  
+}
+  
+/* Apply styles to body and html elements */
+body, html {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: 1.25em;
+    letter-spacing: 0.025em;
+    color: var(--text-1);
+    background-color: var(--background);
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: calc(70% + 10rem);
+    transform: translate(-50%, -50%);
+}
+
+.pic {
+    width: 4rem;
+    height: 4rem;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.contact {
+    position: relative;
+    margin-bottom: 1rem;
+    padding-left: 5rem;
+    height: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.contact .pic {
+    position: absolute;
+    left: 0;
+}
+
+.contact .name {
+    font-weight: 500;
+    color: var(--text-3);
+    margin-bottom: 0.125rem;
+}
+
+.contact .message, .contact .seen {
+    font-size: 0.9rem;
+    color: var(--text-3);
+}
+
+.contact .badge {
+    box-sizing: border-box;
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    padding-top: 0.125rem;
+    border-radius: 1rem;
+    top: 0;
+    left: 2.5rem;
+    background: var(--text-1);
+    color: white;
+}
+
+.contacts {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-6rem, -50%);
+    width: 24rem;
+    height: 35rem;
+    padding: 1rem 2rem 1rem 1rem;
+    box-sizing: border-box;
+    border-radius: 1rem 0 0 1rem;
+    cursor: pointer;
+    background: white;
+    box-shadow: 0 0 8rem 0 rgba(0, 0, 0, 0.1), 2rem 2rem 4rem -3rem rgba(0, 0, 0, 0.5);
+    transition: transform 500ms;
+}
+
+.contacts h2 {
+    margin: 0.5rem 0 1.5rem 5rem;
+}
+
+.contacts .fa-bars {
+    position: absolute;
+    left: 2.25rem;
+    color: var(--text-3);
+    transition: color 200ms;
+}
+
+.contacts .fa-bars:hover {
+    color:var(--text-2);
+}
+
+.contacts .contact:last-child {
+    margin: 0;
+}
+
+.contacts:hover {
+    transform: translate(-23rem, -50%);
+}
+
+.chat {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28rem;
+    height: 42rem;
+    z-index: 2;
+    box-sizing: border-box;
+    border-radius: .5rem;
+    background-size: cover;
+    background-position: center;
+    background: var(--white);
+    box-shadow: 0 0 8rem 0 rgba(0, 0, 0, 0.1), 0rem 2rem 4rem -3rem rgba(0, 0, 0, 0.5);
+}
+
+.chat .messages .profile_pic{
+    position: relative;
+    top: 50px;
+    width: 3rem;
+    height: 3rem;
+}
+
+.chat .contact.bar {
+    flex-basis: 3.5rem;
+    flex-shrink: 0;
+    margin: 1rem;
+    box-sizing: border-box;
+}
+
+.chat .contact .desc{
+    position: fixed;
+}
+
+.chat .contact .switch{
+    position: relative;
+    display: flex;
+    bottom: 0;
+    flex-direction: row-reverse;
+    cursor: pointer;
+}
+
+.chat .contact .switch #icon{
+    color: var(--dark-theme);
+    width:30px;
+}
+
+
+.chat .messages {
+    padding: 1rem;
+    background: var(--background-display-messages);
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 2;
+    overflow-y: auto;
+    box-shadow: inset 0 2rem 2rem -2rem rgba(0, 0, 0, 0.05), inset 0 -2rem 2rem -2rem rgba(0, 0, 0, 0.05);
+}
+
+.chat .messages .time {
+    font-size: 0.8rem;
+    background: var(--time-bg);
+    padding: 0.25rem 1rem;
+    border-radius: 2rem;
+    color: var(--text-3);
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.chat .messages .message_time{
+    font-size: 12px;
+    padding-top: 5px;
+}
+
+.chat .messages .message {
+    box-sizing: border-box;
+    padding: 0.4rem 1rem;
+    margin: 1rem;
+    background: var(--receiver-box);
+    border-radius: 0 1.125rem 1.125rem 1.125rem;
+    min-height: 2.25rem;
+    width: fit-content;
+    max-width: 66%;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.075), 0rem 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
+}
+
+.chat .messages .message.receiver{
+    position: relative;
+    left: 50px;
+    color: var(--receiver-message);
+}
+
+.chat .messages .message.sender {
+    margin: 1rem .1rem 1rem auto;
+    border-radius: 1.125rem 0 1.125rem 1.125rem;
+    background: var(--sender-box);
+    color: var(--sender-message);
+}
+
+/* typing indicator */
+.tiblock {
+    /*  */
+}
+
+.ticontainer .tidot {  
+    background: black;
+    
+}
+
+.tidot {
+    -webkit-animation: mercuryTypingAnimation 1.5s infinite ease-in-out;
+    border-radius: 2px;
+    display: inline-block;
+    margin-right: 2px;
+    height: 6px;
+    width: 6px;
+}
+
+@-webkit-keyframes mercuryTypingAnimation{
+0%{
+  -webkit-transform:translateY(0px)
+}
+28%{
+  -webkit-transform:translateY(-5px)
+}
+44%{
+  -webkit-transform:translateY(0px)
+}
+}
+
+.tidot:nth-child(1){
+-webkit-animation-delay:200ms;
+}
+.tidot:nth-child(2){
+-webkit-animation-delay:300ms;
+}
+.tidot:nth-child(3){
+-webkit-animation-delay:400ms;
+}
+
+/*End of typing indicator */
+
+.chat .input {
+    box-sizing: border-box;
+    flex-basis: 4rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem 0 1.5rem;
+}
+
+.chat .input i {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    color: var(--text-2);
+    cursor: pointer;
+    transition: color 200ms;
+}
+
+.chat .input i:hover {
+    color: var(--text-1)
+}
+
+.chat .input input {
+    border: none;
+    background-image: none;
+    background-color: var(--white);
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    border-radius: 1.125rem;
+    flex-grow: 2;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1), 0rem 1rem 1rem -1rem rgba(0, 0, 0, 0.2);
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.025em;
+}
+
+.chat .input input::placeholder {
+    color: var(--text-3)
+}
+
+@keyframes typing {
+    0%, 75%, 100% {
+        transform: translate(0, 0.25rem) scale(0.9);
+        opacity: 0.5;
+    }
+    25% {
+        transform: translate(0, -0.25rem) scale(1);
+        opacity: 1;
+    }
+}
+
+.center ::-webkit-scrollbar{
+    width: 8px;
+}
+
+.center ::-webkit-scrollbar-track{
+    background: var(--scrollbar-track);
+    border-radius: 12px;
+}
+
+.center ::-webkit-scrollbar-thumb{
+    background: var(--scrollbar-thumb);
+  border-radius: 12px;
+}
+
+
+
+
+/* Define background images for .pic elements */
+.pic.stark {
+    background-image: url('https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/7/73/SMH_Mentor_6.png');
+}
+
+.pic.group{
+    background-color: #eee;
+    background-image: url('./img/user-group.png');
+}
+
+.pic.banner {
+    background-image: url('https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/4/4f/BruceHulk-Endgame-TravelingCapInPast.jpg');
+}
+
+.pic.thor {
+    background-image: url('https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/9/98/ThorFliesThroughTheAnus.jpg');
+}
+
+.pic.danvers {
+    background-image: url('https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/0/05/HeyPeterParker.png');
+}
+
+.pic.rogers {
+    background-image: url('https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/7/7c/Cap.America_%28We_Don%27t_Trade_Lives_Vision%29.png');
+}
+
+
+
