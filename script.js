@@ -8,6 +8,7 @@ icon.onclick = function(){
    }
 }
 
+// Function to pick an emoji and insert in the input field
 $(document).ready(function() {
    // Initialize emojioneArea on the input field
    $("#emoji-input").emojioneArea({
